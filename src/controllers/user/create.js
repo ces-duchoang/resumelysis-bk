@@ -22,7 +22,7 @@ const create = async (req, res) => {
       hashPassword
     };
     if (await createUser(newUser)) return Created(res, { name, email });
-    else return Conflict(res, SomethingWentWrongMsg);
+    return Conflict(res, SomethingWentWrongMsg);
   } catch (err) {
     InternalServerError(res);
   }
