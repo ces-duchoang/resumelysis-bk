@@ -30,12 +30,13 @@ db.once('open', () => {
 //Enable prefight method
 app.options('*', cors({ origin: config.ENABLE_URL }));
 //Default index route
-app.get('/', (req, res) => {
-    res.send('hello world');
-});
+// app.get('/', (req, res) => {
+//     res.send('hello world');
+// });
 
 //Set route
 app.use('/api', routes);
 app.use('/res', express.static(config.UPLOAD_FOLDER));
-
+app.use('/', express.static(__dirname + '/../build'));
+console.log(__dirname);
 module.exports = app;
